@@ -3,107 +3,504 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZyroYonk Hub</title>
-
+<title>🔑 ZyroYonk Hubkey</title>
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #0d0d0d, #1a001f);
-        color: white;
-        text-align: center;
-    }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    .container {
-        max-width: 500px;
-        margin: auto;
-        padding-top: 60px;
-    }
+  body {
+    background: #0a0a0f;
+    color: #e0e0f0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-    .logo {
-        font-size: 36px;
-        font-weight: bold;
-        background: linear-gradient(90deg, #8a2bff, #ff00cc);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
+  /* Animated star background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(100, 60, 220, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(60, 120, 255, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-    .subtitle {
-        color: #aaa;
-        margin-bottom: 30px;
-    }
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 10, 18, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(130, 90, 255, 0.2);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 58px;
+  }
 
-    .card {
-        background: rgba(20,20,20,0.9);
-        padding: 25px;
-        border-radius: 20px;
-        box-shadow: 0 0 25px rgba(138,43,255,0.3);
-    }
+  .nav-logo {
+    font-size: 18px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #a78bfa, #60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.3px;
+    text-decoration: none;
+  }
 
-    .btn {
-        display: block;
-        margin: 12px 0;
-        padding: 15px;
-        background: #1f1f1f;
-        border-radius: 12px;
-        text-decoration: none;
-        color: white;
-        transition: 0.2s;
-        font-weight: bold;
-    }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+  }
 
-    .btn:hover {
-        transform: scale(1.05);
-        background: #2b2b2b;
-    }
+  .nav-links a {
+    color: #b0b0cc;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+  }
 
-    .main-btn {
-        background: #8a2bff;
-    }
+  .nav-links a:hover {
+    color: #e0e0f0;
+    background: rgba(130, 90, 255, 0.12);
+    border-color: rgba(130, 90, 255, 0.25);
+  }
 
-    .main-btn:hover {
-        background: #a14bff;
-    }
+  .nav-links .status-link {
+    color: #4ade80;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
 
-    footer {
-        margin-top: 40px;
-        color: #555;
-        font-size: 12px;
-    }
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    background: #4ade80;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #4ade80;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .discord-btn {
+    background: linear-gradient(135deg, #5865F2, #7289da) !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    border-color: transparent !important;
+    font-weight: 600 !important;
+  }
+
+  /* MAIN */
+  main {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem 1.5rem 4rem;
+    gap: 2.5rem;
+  }
+
+  .hero-badge {
+    background: rgba(130, 90, 255, 0.15);
+    border: 1px solid rgba(130, 90, 255, 0.3);
+    border-radius: 999px;
+    padding: 6px 18px;
+    font-size: 12px;
+    color: #c4b5fd;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  h1.page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    text-align: center;
+    background: linear-gradient(135deg, #e0d7ff 0%, #a78bfa 50%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.15;
+    letter-spacing: -1px;
+  }
+
+  .page-subtitle {
+    font-size: 15px;
+    color: #8080a0;
+    text-align: center;
+  }
+
+  /* CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 860px;
+  }
+
+  /* LIFETIME CARD */
+  .card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(130, 90, 255, 0.2);
+    border-radius: 18px;
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.2s;
+  }
+
+  .card:hover {
+    border-color: rgba(130, 90, 255, 0.45);
+    transform: translateY(-2px);
+  }
+
+  .card.featured {
+    border-color: rgba(130, 90, 255, 0.5);
+    background: rgba(130, 90, 255, 0.06);
+  }
+
+  .card.featured::before {
+    content: '⭐ MOST POPULAR';
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #a78bfa;
+    letter-spacing: 0.5px;
+    background: rgba(130, 90, 255, 0.18);
+    border: 1px solid rgba(130, 90, 255, 0.35);
+    border-radius: 999px;
+    padding: 3px 10px;
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .card-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #e0e0f0;
+    margin-bottom: 6px;
+  }
+
+  .card-subtitle {
+    font-size: 13px;
+    color: #7070a0;
+    margin-bottom: 1.25rem;
+  }
+
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-list li {
+    font-size: 13px;
+    color: #b0b0cc;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .feature-list li::before {
+    content: '✓';
+    color: #4ade80;
+    font-weight: 700;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    background: rgba(74, 222, 128, 0.12);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    text-align: center;
+    line-height: 18px;
+  }
+
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 1.25rem;
+  }
+
+  .price {
+    font-size: 28px;
+    font-weight: 800;
+    color: #e0e0f0;
+  }
+
+  .price-unit {
+    font-size: 13px;
+    color: #7070a0;
+  }
+
+  .card-btn {
+    display: block;
+    width: 100%;
+    padding: 11px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+    letter-spacing: 0.2px;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 6px 28px rgba(124, 58, 237, 0.6);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: #a78bfa;
+    border: 1px solid rgba(130, 90, 255, 0.35);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(130, 90, 255, 0.1);
+    border-color: rgba(130, 90, 255, 0.55);
+  }
+
+  /* KEY STATUS BOX */
+  .key-status-box {
+    width: 100%;
+    max-width: 860px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(130, 90, 255, 0.2);
+    border-radius: 18px;
+    padding: 1.75rem;
+  }
+
+  .key-status-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.25rem;
+  }
+
+  .key-status-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(74, 222, 128, 0.12);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  .key-status-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #e0e0f0;
+  }
+
+  .key-status-sub {
+    font-size: 12px;
+    color: #7070a0;
+  }
+
+  .active-badge {
+    margin-left: auto;
+    background: rgba(74, 222, 128, 0.12);
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    color: #4ade80;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .key-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+    margin-bottom: 1.25rem;
+  }
+
+  .key-meta-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    padding: 12px;
+  }
+
+  .key-meta-label {
+    font-size: 11px;
+    color: #7070a0;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .key-meta-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: #c0c0e0;
+  }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    font-size: 12px;
+    color: #5050708;
+    color: rgba(130, 130, 180, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 2px; }
+    .nav-links a { padding: 5px 10px; font-size: 12px; }
+    main { padding: 3rem 1rem 3rem; }
+  }
 </style>
 </head>
-
 <body>
 
-<div class="container">
+<nav>
+  <a class="nav-logo" href="#">ZyroYonk</a>
+  <ul class="nav-links">
+    <li><a href="#">Keys</a></li>
+    <li>
+      <a href="#" class="status-link">
+        <span class="status-dot"></span> Status : Safe
+      </a>
+    </li>
+    <li><a href="https://discord.gg/" class="discord-btn">💬 Discord</a></li>
+  </ul>
+</nav>
 
-    <div class="logo">ZyroYonk</div>
-    <div class="subtitle">Ultimate Script Hub ⚡</div>
+<main>
+  <span class="hero-badge">🔑 Premium Key System</span>
 
-    <div class="card">
+  <h1 class="page-title">ZyroYonk Hubkey</h1>
+  <p class="page-subtitle">Choose your access plan and get started instantly</p>
 
-        <a href="#" class="btn main-btn" onclick="copyScript()">📋 Copy Script</a>
+  <div class="cards-grid">
 
-        <a href="#" class="btn">🔑 Get Key</a>
-        <a href="#" class="btn">💬 Discord</a>
-        <a href="#" class="btn">📺 YouTube</a>
-        <a href="#" class="btn">⬇ Download</a>
-
+    <!-- Lifetime Card -->
+    <div class="card featured">
+      <span class="card-icon">👑</span>
+      <div class="card-title">Lifetime Access</div>
+      <div class="card-subtitle">One-time payment — forever access</div>
+      <div class="price-row">
+        <span class="price">100</span>
+        <span class="price-unit">Robux</span>
+      </div>
+      <ul class="feature-list">
+        <li>Never expires</li>
+        <li>Priority support</li>
+        <li>Early updates</li>
+        <li>Full premium access</li>
+        <li>All future features included</li>
+      </ul>
+      <a class="card-btn btn-primary" href="#">💎 Get Lifetime Key</a>
     </div>
 
-    <footer>
-        © 2026 ZyroYonk Hub
-    </footer>
+    <!-- Free Key Card -->
+    <div class="card">
+      <span class="card-icon">⚡</span>
+      <div class="card-title">ZyroYonk Key</div>
+      <div class="card-subtitle">Daily access — renews every 24 hours</div>
+      <div class="price-row">
+        <span class="price">Free</span>
+      </div>
+      <ul class="feature-list">
+        <li>1-day access</li>
+        <li>Full premium access</li>
+        <li>Community support</li>
+        <li>Regular updates</li>
+      </ul>
+      <a class="card-btn btn-secondary" href="#">🔑 Get Your Key</a>
+    </div>
 
-</div>
+  </div>
 
-<script>
-function copyScript() {
-    const script = `loadstring(game:HttpGet("https://ZyroYonk.github.io/script.lua"))()`;
-    navigator.clipboard.writeText(script);
-    alert("Script copied to clipboard!");
-}
-</script>
+  <!-- Key Status Box -->
+  <div class="key-status-box">
+    <div class="key-status-header">
+      <div class="key-status-icon">🔐</div>
+      <div>
+        <div class="key-status-title">Key Status</div>
+        <div class="key-status-sub">Current system information</div>
+      </div>
+      <div class="active-badge">
+        <span class="status-dot"></span>
+        Active
+      </div>
+    </div>
+
+    <div class="key-meta-grid">
+      <div class="key-meta-item">
+        <div class="key-meta-label">📅 Last Update</div>
+        <div class="key-meta-value">Today</div>
+      </div>
+      <div class="key-meta-item">
+        <div class="key-meta-label">⏰ Validity</div>
+        <div class="key-meta-value">1 Day Access</div>
+      </div>
+      <div class="key-meta-item">
+        <div class="key-meta-label">🔐 Status</div>
+        <div class="key-meta-value">Click to get key</div>
+      </div>
+      <div class="key-meta-item">
+        <div class="key-meta-label">⚡ Features</div>
+        <div class="key-meta-value">Full Premium</div>
+      </div>
+    </div>
+
+    <a class="card-btn btn-primary" href="#">🔑 Get Your Key Now</a>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2026 ZyroYonk Hubkey — All rights reserved
+</footer>
 
 </body>
 </html>
